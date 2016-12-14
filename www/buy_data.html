@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta property="description" content="Bibuan Data Application." />
+<title>Data Recharge</title>
+    
+<link rel="shortcut icon" href="myshortcut" />
+<link rel="stylesheet" type="text/css" href="styles/css/bibuain.min.css" />
+<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.structure-1.4.5.min.css" />
+<link rel="stylesheet" type="text/css" href="styles/css/app_style.css" /> 
+<link rel="stylesheet" type="text/css" href="styles/css/flight-manager.css" />
+    
+
+
+
+<script type="text/javascript" language="javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="scripts/config-script.js"></script>
+<script type="text/javascript" language="javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" language="javascript" src="scripts/plug_script.js"></script>
+
+    
+
+</head>
+
+<body>
+    
+    
+  
+    
+    
+    
+    
+
+<div data-role="page" data-title="Data Recharge"><!--Page-->
+    
+   
+            
+    
+    <div data-role="panel" data-display="overlay" id="menu-reveal-panel" class="menu-reveal-panel"><!--Left Panel-->
+        <ul data-role="listview" class="">
+            <li><a href="" class="ui-btn ui-icon-user ui-btn-icon-left text-mr-white">&nbsp;
+                <span id="user_line"></span>
+                
+                
+                </a></li>
+            <li><a href="#signup-section" class="ui-btn ui-icon-edit ui-btn-icon-left text-mr-white" data-transition="slide">&nbsp;History</a></li>
+            <li><a href="about_us/" class="ui-btn ui-icon-info ui-btn-icon-left text-mr-white">&nbsp;About</a></li>
+            
+        </ul>
+    </div><!--Left Panel-->
+    
+    
+    
+    
+     
+    
+    
+     <div data-role="popup" class="ui-content" id="processing-order" data-overlay-theme="a" data-dismissible="false" class="text-center"><!--Processing Order-->
+            
+            <h3>Processing Order</h3>
+            <img src="styles/css/images/ajax-loader.gif" style="display:block; margin: 0 auto;" />
+    </div>
+                
+       
+                
+         
+<a href="#processing-order" data-rel="popup" data-position-to="window" data-transition="pop" id="clik_2_process_order">
+                  &nbsp;
+</a>   
+    
+    
+    
+    
+    
+    <div data-role="popup" class="ui-content" id="latest-prices-popup" data-overlay-theme="a" data-dismissible="false" class="text-center"><!--Latest Prices-->
+            
+            <h3>Fetching Latest Prices</h3>
+            <img src="styles/css/images/ajax-loader.gif" style="display:block; margin: 0 auto;" />
+        
+        <a href="" data-rel="back" id="close_fetch"></a>
+            
+        </div>
+                
+       
+                
+         
+<a href="#latest-prices-popup" data-rel="popup" data-position-to="window" data-transition="pop" id="clik_4_latest_prices">
+                  &nbsp;
+</a>   
+      
+    
+    
+    
+    <header> <!--Heading Section-->
+            <div data-role="header" data-position="fixed">
+                 <a href="#menu-reveal-panel" class="ui-btn ui-icon-bars ui-btn-icon-left ui-btn-icon-notext">Back</a>
+                
+                
+                <h1>Data Recharge</h1>
+                
+               
+                
+                </div>
+    </header><!--Heading Section-->
+            
+            
+            
+          
+            <div data-role="content"><!--Main Content-->
+              
+                
+          
+          <ul data-role="listview" data-inset="true">
+            <li>
+                
+                <form>
+                <div class="ui-field-contain">
+                <label for="phone"><img src="docs/imgs/phone-smart.png" style="max-width:7%; float:right;"/>&nbsp;+234</label>
+                <input type="tel" maxlength="10" required id="recharge-phone" autocomplete="off" autofocus>
+                </div>
+                </form>
+            
+              </li>
+              
+            <li>
+              
+               
+                <label for="phone"><img src="docs/imgs/data.png" style="max-width:7%; float:right;"/>Select Data</label>
+                <br>
+                   
+                    <label id="data-select">
+                        700AT - 1GB
+                       
+                    </label>
+                
+                    <button type="button">
+                        <a href="#data-plans" class="text-mr-white" data-rel="popup" data-position-to="window" data-transition="slidedown">
+                        Change
+                        </a>
+                            </button>
+                   
+               
+              </li>
+            </ul>
+                
+            <button type="button" class="bg-mini-color" id="process-order-button">Continue</button>
+                
+                <br>
+                
+                <div class="ui-grid-a">
+                
+                    <div class="ui-block-a"><img src="docs/imgs/buy1.png" style="max-width:130px;" /></div>
+                                        
+                                        
+                        <div class="ui-block-b">
+                <p>All Data plans are valid for 30 days only.
+                    
+                    <b>AT</b> - Air Time.
+                    <br>
+                   <small>*Nigerian Naira only*</small>
+                    </p>
+                    </div>
+                    
+                </div>
+    
+    
+    
+    
+    
+      <div data-role="popup" class="ui-content" id="data-plans" data-overlay-theme="a" data-dismissible="false"><!--Popup-->
+          
+          <a href="" data-rel="back" id="close-data-popup"></a>
+          
+          <div data-role="collapsibleset" data-theme="b" data-content-theme="a" data-collapsed-icon="plus" data-expanded-icon="delete" style="margin:0; width: 250px;"><!--CSET-->
+              
+          <div data-role="collapsible"><!--Collapsible-->
+              
+              
+              <h2>MTN Data
+              <img src="docs/imgs/mtn.png" style="max-width:12%; float:right;" />
+              </h2>
+              
+           <ul data-role="listview" id="mtn-data-list">
+               
+               <li id="mtn-1">700AT - 1GB</li>
+               <li id="mtn-2">1200AT - 2GB</li>
+                <li id="mtn-3">1700AT - 3GB</li>
+                <li id="mtn-4">3000AT - 5GB</li>
+               <li id="mtn-5">5200AT - 10GB</li>
+               
+            </ul>
+          </div><!--Collapsible-->
+              
+              
+            <div data-role="collapsible"><!--Collapsible-->
+              
+              
+              <h2>Etisalat Data
+              <img src="docs/imgs/etisalat.gif" style="max-width:12%; float:right;" />
+              </h2>
+              
+           <ul data-role="listview" id="eti-data-list">
+               
+               <li id="eti-1">300AT - 250MB</li>
+                        <li id="eti-2">600AT - 500MB</li>
+                        <li id="eti-3">700AT - 1GB</li>
+                        <li id="eti-4">1300AT - 2GB</li>
+                        <li id="eti-5">1800AT - 3GB</li>
+                        
+                       
+               
+            </ul>
+          </div><!--Collapsible-->
+              
+          </div><!--CSET-->
+        </div><!--Popup-->
+        
+    
+                
+                
+                
+                
+                
+                            
+    
+    
+                
+          
+                
+</div><!--Main Content-->
+         
+            
+            
+       
+   <div data-role="footer" data-position="fixed" class="bg-mr-white text-main-color">
+    
+       
+       <h4>Take a tour</h4>
+       
+    </div>            
+ 
+    
+            
+</div><!--Page-->
+   

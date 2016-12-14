@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta property="description" content="Bibuan Data Application." />
+<title>Add Recharge Card</title>
+    
+<link rel="shortcut icon" href="myshortcut" />
+<link rel="stylesheet" type="text/css" href="styles/css/bibuain.min.css" />
+<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.structure-1.4.5.min.css" />
+<link rel="stylesheet" type="text/css" href="styles/css/app_style.css" /> 
+<link rel="stylesheet" type="text/css" href="styles/css/flight-manager.css" />
+    
+
+
+
+<script type="text/javascript" language="javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="scripts/config-script.js"></script>
+<script type="text/javascript" language="javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" language="javascript" src="scripts/plug_script.js"></script>
+
+    
+
+</head>
+
+<body>
+    
+    
+    
+    <div data-role="page" data-title="Add Recharge Card"><!--Order Summary-->
+        
+        
+         <div data-role="popup" class="ui-content" id="sending-card" data-overlay-theme="a" data-dismissible="false" class="text-center"><!--Sending OTP-->
+            
+            <h3>Sending...</h3>
+            <img src="styles/css/images/ajax-loader.gif" style="display:block; margin: 0 auto;" />
+    </div>
+                
+       
+                
+         
+<a href="#sending-card" data-rel="popup" data-position-to="window" data-transition="pop" id="clik_2_send_card">
+                  &nbsp;
+</a>   
+        
+        
+        
+    <header> <!--Heading Section-->
+            <div data-role="header" data-position="fixed">
+                 <a href="#" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext">Back</a>
+                    <h1>Recharge Card</h1>
+                <a href="" id="add-pin-field" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-icon-notext">Add</a>
+            </div>
+    </header><!--Heading Section-->
+        
+        
+            
+      
+    
+     
+            <div data-role="content">
+                 
+                    <h2 class="text-center text-mini-color">Enter Card Pin</h2>
+                
+                      
+          <form action="" method="post" onsubmit="return false" id="recharge-card-form">
+          
+                <div class="ui-field-contain" id="recharge-field">
+                    <input type="tel" maxlength="16" name="recharge_pin_1" required autofocus autocomplete="off">
+                    
+                </div>
+              
+              <div class="ui-field-contain">
+                    <button type="submit">Send</button>
+                </div>
+                
+          </form>
+                
+             
+            <br>
+                
+                
+                <p class="text-center">
+                    <small>
+                       We highly recommend that you enter a valid pin into the boxes. Recurring use of invalid rehcarge pin 
+                        will result in the blockage of this phone number.
+                        
+                    </small>
+                </p>
+                
+            </div>
+   
+        
+        
+        
+             
+   <div data-role="footer" data-position="fixed" class="bg-mini-color text-center">
+    
+       
+        
+                
+              
+       <h1 class="text-mr-white" id="checkout-btn"> Take a tour </h1>
+                    
+                        
+       
+    </div>            
+ 
+    
+        
+        
+    </div><!--Order Summary-->
+    
+    
+    
+    </body>
+    
+</html>
