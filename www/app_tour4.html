@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta property="description" content="Bibuan Data Application." />
-<title>Order Summary</title>
+<title>Tour</title>
     
 
 <link rel="stylesheet" type="text/css" href="styles/css/bibuain.min.css" />
@@ -20,7 +20,7 @@
 <script type="text/javascript" language="javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" language="javascript" src="scripts/config-script.js"></script>
 <script type="text/javascript" language="javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
-<script type="text/javascript" language="javascript" src="scripts/plug_script.js"></script>
+
 
     
 
@@ -30,13 +30,18 @@
     
     
     
-    <div data-role="page" data-title="Order Summary"><!--Order Summary-->
+    <div data-role="page" data-title="Tour" class="bg-main-color"><!--App Tour-->
+        
+        
+       
+        
         
         
     <header> <!--Heading Section-->
             <div data-role="header" data-position="fixed">
                  <a href="#" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext">Back</a>
-                    <h1>Order Summary</h1>
+                    <h1>Tour</h1>
+              
             </div>
     </header><!--Heading Section-->
         
@@ -45,44 +50,40 @@
       
     
      
-            <div data-role="content">
+            <div data-role="content" class="text-center" style="color:#ffffff !important;">
                  
-                    <h2 class="text-center text-mini-color">Details</h2>
-                
-                      
-          <ul data-role="listview" data-inset="true">
-              <li id="phone_n_data"></li>
-              <li id="data_network"></li>
-              <li id="data_price"></li>
-              <li id="data_bank_price"></li>
-            </ul>
-                
-          <br><br>
-                
-            <p class="text-center">
-              <a href="how_to_pay.html" data-transition="slideup" data-direction="reverse" class="text-main-color">How to Pay?</a>
-                
+                   
+                <img src="img/tour_3_pic.png" />
+               
+         
+                <p class="text-center text-mr-white">
+                  You can snap a proof of payment with your smartphone camera or pick an existing picture from the gallery to upload.
+                    
                 </p>
-                
+                 
             </div>
    
         
         
         
              
-   <div data-role="footer" data-position="fixed" class="bg-mini-color text-center">
-    
-       <h1 class="text-mr-white" id="push-to-payment"> Add Proof of Payment </h1>
-                    
+   <div data-role="footer" data-position="fixed">
+       
+       
+       <h4><a href="app_tour5.html" style="color:#ffffff;" data-transition="slide" data-direction="reverse">Finish</a></h4>
+       
+                 
+       
     </div>            
  
     
         
         
-    </div><!--Order Summary-->
+    </div><!--App Tour-->
     
-    
-    
+
+<script type="text/javascript" language="javascript" src="scripts/plug_script.js"></script>
+<script type="text/javascript" language="javascript" src="scripts/bibuain_cordova.js"></script>
     </body>
     
 </html>

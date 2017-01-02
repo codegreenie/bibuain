@@ -11,12 +11,12 @@
 <meta property="description" content="Bibuan Data Application." />
 <title>Data Recharge</title>
     
-<link rel="shortcut icon" href="myshortcut" />
+
 <link rel="stylesheet" type="text/css" href="styles/css/bibuain.min.css" />
 <link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.icons.min.css" />
 <link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.structure-1.4.5.min.css" />
 <link rel="stylesheet" type="text/css" href="styles/css/app_style.css" /> 
-<link rel="stylesheet" type="text/css" href="styles/css/flight-manager.css" />
+
     
 
 
@@ -51,8 +51,13 @@
                 
                 
                 </a></li>
-            <li><a href="#signup-section" class="ui-btn ui-icon-edit ui-btn-icon-left text-mr-white" data-transition="slide">&nbsp;History</a></li>
-            <li><a href="about_us/" class="ui-btn ui-icon-info ui-btn-icon-left text-mr-white">&nbsp;About</a></li>
+            <li><a href="history.html" class="ui-btn ui-icon-edit ui-btn-icon-left text-mr-white" data-transition="slideup" data-direction="reverse">&nbsp;History</a></li>
+            
+             
+            <li><a href="app_tour.html" class="ui-btn ui-icon-navigation ui-btn-icon-left text-mr-white" data-transition="slideup" data-direction="reverse">&nbsp;Take a tour</a></li>
+            
+            <li><a href="about_app.html" class="ui-btn ui-icon-info ui-btn-icon-left text-mr-white" data-transition="slideup" data-direction="reverse">&nbsp;About</a></li>
+           
             
         </ul>
     </div><!--Left Panel-->
@@ -60,42 +65,20 @@
     
     
     
+     <div data-role="popup" id="network-stat" class="text-center" data-dismissible="false" style="padding:10px 15px;" data-overlay-theme="a" class="ui-content"><!--Network Health-->
+         
+         <img src="styles/css/images/ajax-loader.gif" style="display:block; margin:0 auto;">
+         
+         <h3>Checking network...</h3>
+         
+    
+    </div><!--Network Health-->
+    
+    
      
     
     
-     <div data-role="popup" class="ui-content" id="processing-order" data-overlay-theme="a" data-dismissible="false" class="text-center"><!--Processing Order-->
-            
-            <h3>Processing Order</h3>
-            <img src="styles/css/images/ajax-loader.gif" style="display:block; margin: 0 auto;" />
-    </div>
-                
-       
-                
-         
-<a href="#processing-order" data-rel="popup" data-position-to="window" data-transition="pop" id="clik_2_process_order">
-                  &nbsp;
-</a>   
-    
-    
-    
-    
-    
-    <div data-role="popup" class="ui-content" id="latest-prices-popup" data-overlay-theme="a" data-dismissible="false" class="text-center"><!--Latest Prices-->
-            
-            <h3>Fetching Latest Prices</h3>
-            <img src="styles/css/images/ajax-loader.gif" style="display:block; margin: 0 auto;" />
-        
-        <a href="" data-rel="back" id="close_fetch"></a>
-            
-        </div>
-                
-       
-                
-         
-<a href="#latest-prices-popup" data-rel="popup" data-position-to="window" data-transition="pop" id="clik_4_latest_prices">
-                  &nbsp;
-</a>   
-      
+  
     
     
     
@@ -106,7 +89,7 @@
                 
                 <h1>Data Recharge</h1>
                 
-               
+                <a href="#network-stat" class="ui-btn ui-icon-phone ui-btn-icon-left ui-btn-icon-notext" title="Check network status..." id="pull_network_stats" data-rel="popup" data-position-to="window" data-transition="slidedown" data-direction="reverse">Network Status</a>
                 
                 </div>
     </header><!--Heading Section-->
@@ -124,7 +107,7 @@
                 <form>
                 <div class="ui-field-contain">
                 <label for="phone"><img src="docs/imgs/phone-smart.png" style="max-width:7%; float:right;"/>&nbsp;+234</label>
-                <input type="tel" maxlength="10" required id="recharge-phone" autocomplete="off" autofocus>
+                <input type="tel" maxlength="10" required id="recharge-phone" autocomplete="off">
                 </div>
                 </form>
             
@@ -137,8 +120,7 @@
                 <br>
                    
                     <label id="data-select">
-                        700AT - 1GB
-                       
+                        1GB - 700 Airtime
                     </label>
                 
                     <button type="button">
@@ -163,10 +145,11 @@
                         <div class="ui-block-b">
                 <p>All Data plans are valid for 30 days only.
                     
-                    <b>AT</b> - Air Time.
+                    
                     <br>
                    <small>*Nigerian Naira only*</small>
                     </p>
+              
                     </div>
                     
                 </div>
@@ -190,11 +173,7 @@
               
            <ul data-role="listview" id="mtn-data-list">
                
-               <li id="mtn-1">700AT - 1GB</li>
-               <li id="mtn-2">1200AT - 2GB</li>
-                <li id="mtn-3">1700AT - 3GB</li>
-                <li id="mtn-4">3000AT - 5GB</li>
-               <li id="mtn-5">5200AT - 10GB</li>
+            <br><span>Getting Price Lists...</span>
                
             </ul>
           </div><!--Collapsible-->
@@ -209,12 +188,7 @@
               
            <ul data-role="listview" id="eti-data-list">
                
-               <li id="eti-1">300AT - 250MB</li>
-                        <li id="eti-2">600AT - 500MB</li>
-                        <li id="eti-3">700AT - 1GB</li>
-                        <li id="eti-4">1300AT - 2GB</li>
-                        <li id="eti-5">1800AT - 3GB</li>
-                        
+               <br><span>Getting Price Lists...</span>
                        
                
             </ul>
@@ -243,7 +217,7 @@
    <div data-role="footer" data-position="fixed" class="bg-mr-white text-main-color">
     
        
-       <h4>Take a tour</h4>
+       <h4 id="footer-tour">Take a tour</h4>
        
     </div>            
  

@@ -1,4 +1,4 @@
-//jQuery Document for Bibuain Data App
+//jQuery Document for Bibuain SME Data App
 
 function processReg(){
     
@@ -12,7 +12,8 @@ function processReg(){
     
     $.ajax({
         
-        url : "http://www.codegreenie.com/php_hub/_Bibuain/process_signup.php",
+        url : "http://www.codegreenie.com/php_hub/_BibuainSME/process_signup.php",
+        //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/process_signup.php",
         type : "POST",
         dataType : "html",
         crossDomain : true,
@@ -41,9 +42,7 @@ function processReg(){
             
         }
         
-        
     });
-    
     
 }
 
@@ -61,11 +60,10 @@ function processOTP(){
     supplied_otp = $("#sent-otp").val();
     
     
-    
-    
     $.ajax({
         
-        url : "http://www.codegreenie.com/php_hub/_Bibuain/verify_otp.php",
+        url : "http://www.codegreenie.com/php_hub/_BibuainSME/verify_otp.php",
+        //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/verify_otp.php",
         type : "POST",
         dataType : "html",
         crossDomain : true,
@@ -96,21 +94,22 @@ function processOTP(){
             
         }
         
-        
     });
     
-    
 }
-
-
-
-
-
 
 
 function pushSelectedPrice(thisPrice){
     
     var selectedPrice = $("#" + thisPrice).html();
+    var selected_bank_price = $("#" + thisPrice).attr("data-bank-price");
+    var selected_card_price = $("#" + thisPrice).attr("data-card-price");
+    
+   
+    window.localStorage.setItem("selected_data", selectedPrice);
+    window.localStorage.setItem("selected_bank_price", selected_bank_price);
+    window.localStorage.setItem("selected_card_price", selected_card_price); 
+    
     
     $("#data-select").html(selectedPrice);
     $("#close-data-popup").trigger("click");
@@ -118,88 +117,93 @@ function pushSelectedPrice(thisPrice){
 }
 
 
-function placeOrder(){ // Place Order
-    
-   $("#clik_2_process_order").trigger("click");
-    
-    
-   var selected_phone = $("#recharge-phone").val();
-   var selected_data = $("#data-select").html();
-   
-    window.localStorage.setItem("selected_phone", selected_phone);
-    window.localStorage.setItem("selected_data", selected_data);
-    
-    var get_selected_phone = window.localStorage.getItem("selected_phone");
-    var get_selected_data =  window.localStorage.getItem("selected_data");
-    var get_selected_network = window.localStorage.getItem("network_name");
-    
-    console.log(get_selected_phone, get_selected_data);
-    console.log(get_selected_network);
-    
-    
+
+
+function getLatestPrices(){
     $.ajax({
         
-        url : "http://www.codegreenie.com/php_hub/_Bibuain/order_summary.php",
-        type : "POST",
-        dataType : "html",
-        crossDomain : true,
-        cache : true,
-        data : {"picked_data" : get_selected_data, "picked_network" : get_selected_network},
-        success : function(successReturn){
-            
-            window.localStorage.setItem("data_price", successReturn);
-            console.log(successReturn);
-            $.mobile.changePage("order_summary.html", {"transition" : "slideup", "data-direction" : "reverse"});
-        },
-        
-        error : function(jqXHR, error, status){
-            
-            console.log(error + " " + status);
-            var error_msg = $("<img src='docs/imgs/warning.png' style='margin:0 auto; display:block;'/><h3>Network Error, Try Again</h3><a href='' data-rel='back' class='ui-btn'>OK</a>");
-            $("#processing-order").html(error_msg);
-            
-        }
-        
-        
-    });
-    
-    
-}// Place Order
-
-
-
-function addRechargeCard(){
-    
-      var realUiUpdate = $("<h3>Sending...</h3><img src='styles/css/images/ajax-loader.gif' style='display:block; margin: 0 auto;' />");
-    $("#sending-card").html(realUiUpdate);
-    
-    
-    $("#clik_2_send_card").trigger("click");
-    
-      $.ajax({
-        
-        url : "http://www.codegreenie.com/php_hub/_Bibuain/check_card.php",
+        url : "http://www.codegreenie.com/php_hub/_BibuainSME/fetch_latest_prices.php",
+        //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/fetch_latest_prices.php",
         type : "GET",
         dataType : "html",
         crossDomain : true,
         cache : true,
-        success : function(successReturn){
-         
-            $.mobile.changePage("history.html", {"transition" : "slide", "data-direction" : "reverse"});
+        success : function(priceReturn){
             
-        },
-        
+           window.localStorage.setItem("current_prices", priceReturn);
+            
+        }
+        ,
         error : function(jqXHR, error, status){
             
-            console.log(error + " " + status);
-            var error_msg = $("<img src='docs/imgs/warning.png' style='margin:0 auto; display:block;'/><h3>Network Error, Try Again</h3><a href='' data-rel='back' class='ui-btn'>OK</a>");
-           $("#sending-card").html(error_msg);
+            window.localStorage.setItem("current_prices", "<span style='margin:10px 0px !important; background-color: #ffffff;'>Cannot get prices. Try again</span>");
+        }
+        
+    });
+}
+
+
+function getLatestPricesEti(){
+    $.ajax({
+        
+        url : "http://www.codegreenie.com/php_hub/_BibuainSME/fetch_latest_prices_eti.php",
+        /*url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/fetch_latest_prices_eti.php",*/
+        type : "GET",
+        dataType : "html",
+        crossDomain : true,
+        cache : true,
+        success : function(priceReturn){
+            
+           window.localStorage.setItem("current_prices_eti", priceReturn);
+            
+        }
+        ,
+        error : function(jqXHR, error, status){
+            
+             window.localStorage.setItem("current_prices_eti", "<span style'=margin:10px 0px !important; background-color: #ffffff;'>Cannot get prices. Try again</span>");
+        }
+        
+    });
+}
+
+
+
+
+function networkHealth(){
+    
+    $("#network-stat").html(' <img src="styles/css/images/ajax-loader.gif" style="display:block; margin:0 auto;"><h3>Checking network...</h3>');
+    
+    $.ajax({
+        
+        url : "http://www.codegreenie.com/php_hub/_BibuainSME/network_health.php
+        //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/network_health.php",
+        type : "GET",
+        dataType : "html",
+        crossDomain : true,
+        cache : true,
+        success : function(statReturn){
+        
+        
+         if(statReturn === "Good"){
+              
+$("#network-stat").html('<h3> Network Status: <span style="font-weight:bold; color:#096;">Good</span></h3><span>You can purchase airtime data.</span><a href="" data-rel="back" class="ui-btn">OK</a>');
+          }
+            
+            else{
+                
+                $("#network-stat").html('<h3> Network Status: <span style="font-weight:bold; color:#900;">Bad</span></h3><span>Internet Data purchase is currently unavailable. Please try again later</span><a href="" data-rel="back" class="ui-btn">OK</a>');
+            }
+            
+        }
+        ,
+        error : function(jqXHR, error, status){
+            
+             console.log("error, status");
+            $("#network-stat").html('<h3> Network Status: <span style="font-weight:bold; color:#900;">Error</span></h3><a href="" data-rel="back" class="ui-btn">OK</a>');
             
         }
         
-        
     });
-    
 }
 
 
@@ -207,10 +211,20 @@ function addRechargeCard(){
 
 
 
-$(document).on("pagecreate", function(){
+
+
+
+
+$(document).on("pagecreate", function(){ //document.ready equivalent
+
+
+
+
+//All auto execute codes upon app load v1.2.0
     
-   $("#start-app").on("click", function(){
+    $("#start-app").on("click", function(){
        
+     
        
       if(window.localStorage.getItem("my_phone_number") === null || window.localStorage.getItem("my_otp") === null){
         $.mobile.changePage("reg_zone.html", {"transition" : "slideup", "data-direction" : "reverse"});  
@@ -221,6 +235,40 @@ $(document).on("pagecreate", function(){
        }
    });
     
+ //Initiate initial cookies
+    
+    if(window.localStorage.getItem("selected_data") === null || window.localStorage.getItem("selected_bank_price") === null || window.localStorage.getItem("selected_card_price") === null)
+    {
+        
+    window.localStorage.setItem("selected_data", "1GB - 700 Airtime");
+    window.localStorage.setItem("selected_bank_price", "500");
+    window.localStorage.setItem("selected_card_price", "700");
+    window.localStorage.setItem("network_name", "MTN");
+        
+        console.log(window.localStorage.getItem("selected_data"));
+    }
+    
+
+
+
+
+    
+   
+    
+      $("#start-app-2").on("click", function(){
+       
+      
+      if(window.localStorage.getItem("my_phone_number") === null || window.localStorage.getItem("my_otp") === null){
+        $.mobile.changePage("reg_zone.html", {"transition" : "slideup", "data-direction" : "reverse"});  
+      }
+       
+       else{
+       $.mobile.changePage("buy_data.html", {"transition" : "slideup", "data-direction" : "reverse"});
+       }
+   });
+    
+   
+   
     
     $("#phone-reg-form").on("submit", function(){
         
@@ -237,14 +285,40 @@ $(document).on("pagecreate", function(){
     
     
     
+    getLatestPrices();
+    var latest_prices_cookie = window.localStorage.getItem("current_prices");
+   $("#mtn-data-list").empty().append(latest_prices_cookie);
+    
+    getLatestPricesEti();
+    var latest_prices_cookie_eti = window.localStorage.getItem("current_prices_eti");
+   $("#eti-data-list").empty().append(latest_prices_cookie_eti);
+    
+    
     $("#user_line").html("+234" + window.localStorage.getItem("my_phone_number"));
     $("#recharge-phone").val(window.localStorage.getItem("my_phone_number"));
     
+     
+     var get_selected_phone = window.localStorage.getItem("selected_phone");
+    var get_selected_data =  window.localStorage.getItem("selected_data");
+    var get_selected_network = window.localStorage.getItem("network_name");
+    var get_selected_bank_price = window.localStorage.getItem("selected_bank_price");
+    var get_selected_card_price = window.localStorage.getItem("selected_card_price"); 
+    
+    
+    $("#phone_n_data").html("<span class='ui-icon-phone ui-icon-notext ui-btn-icon-left' style='position:relative;'></span>+234" + get_selected_phone + " | " + get_selected_data);
+    $("#data_network").html("<span class='ui-icon-cloud ui-btn-icon-left' style='position:relative;'></span>" + get_selected_network);
+    $("#data_price").html("<span class='ui-icon-tag ui-btn-icon-left' style='position:relative;'></span><del>N</del>" + get_selected_card_price + " Airtime");
+    $("#data_bank_price").html("<span class='ui-icon-tag ui-btn-icon-left' style='position:relative;'></span><del>N</del>" + get_selected_bank_price + " Bank Deposit/Transfer");
+    
+    
+    
+    
     var mtnDataList = $("#mtn-data-list").children("li");
-    $(mtnDataList).on("click", function(){
+    mtnDataList.on("click", function(){
         
     var getID = $(this).attr("id");
-    window.localStorage.setItem("network_name", "MTN");
+    var network_name = $(this).attr("data-network-name");
+    window.localStorage.setItem("network_name", network_name);
     pushSelectedPrice(getID);
     
     });
@@ -252,8 +326,8 @@ $(document).on("pagecreate", function(){
     
     
     var etiDataList = $("#eti-data-list").children("li");
-    $(etiDataList).on("click", function(){
-        
+    etiDataList.on("click", function(){
+    
     var getID = $(this).attr("id");
     window.localStorage.setItem("network_name", "Etisalat");
     pushSelectedPrice(getID);
@@ -263,63 +337,126 @@ $(document).on("pagecreate", function(){
     
     
     $("#process-order-button").on("click", function(){
-       
-        placeOrder();
+    
+   var selected_phone = $("#recharge-phone").val();
+   window.localStorage.setItem("selected_phone", selected_phone);
+        
+   
+       $.mobile.changePage("order_summary.html", {"transition" : "slideup", "data-direction" : "reverse"});
     });
     
     
+   
     
-    var get_selected_phone = window.localStorage.getItem("selected_phone");
-    var get_selected_data =  window.localStorage.getItem("selected_data");
-    var get_selected_network = window.localStorage.getItem("network_name");
-    var get_data_price = window.localStorage.getItem("data_price");
-    
-    
-    $("#phone_n_data").html("<span class='ui-icon-phone ui-icon-notext ui-btn-icon-left' style='position:relative;'></span>+234" + get_selected_phone + " | " + get_selected_data);
-    $("#data_network").html("<span class='ui-icon-cloud ui-btn-icon-left' style='position:relative;'></span>" + get_selected_network);
-    $("#data_price").html("<span class='ui-icon-tag ui-btn-icon-left' style='position:relative;'></span><del>N</del>" + get_data_price);
-    
-    
-    
-    $("#add-recharge-card").on("click", function(){
+ $("#push-to-payment").on("click", function(){
        
-        $.mobile.changePage("add_recharge.html", {"transition" : "slideup", "data-direction" : "reverse"});
+$.mobile.changePage("verify_payment.html", {"transition" : "slideup", "data-direction" : "reverse"});
     });
     
     
+   
+
     
-    var pin_field_count = 2;
-    
-    $("#add-pin-field").on("click", function(){
-       
-        var pinField = $("<input type='tel' maxlength='16' style='margin-bottom: 12px; min-height: 2.2em; width: 100%; border-radius: 8px; border: soild 0.4px #bbbbbb; background-color: #ffffff;'" + "name= recharge_pin_" + pin_field_count + ">"); 
-        pinField.appendTo($("#recharge-field"));
-        
-        
-        pin_field_count++;
-        
-    });
-    
-    
-    $("#recharge-card-form").on("submit", function(){
-       
-        addRechargeCard();
-        
-    });
-    
-    $("#goto-home").click(function(){
+$("#goto-home").click(function(){
         
         $.mobile.changePage("buy_data.html", {"transition" : "slideup", "data-direction" : "reverse"});
     });
     
+
+$("#footer-tour").click(function(){
+        
+        $.mobile.changePage("app_tour.html", {"transition" : "slideup", "data-direction" : "reverse"});
+    });
+
+
+    
+    
+$("#pull_network_stats").click(function(){
+        
+    networkHealth();
+        
+    });
+
+    
+     
+   
+
+
+    
+    
+    // HARDWARE CODE BABY
+    
+// Custom JS for Bibuain SME for Hardware
+var pictureSource;
+var destinationType;
+
+
+$(document).on("deviceready", function(){
+    
+    alleventsready();
+    
 });
 
+    
+    
+    
+    
+function alleventsready(){
+    
+    $("body").on("click", "#open-cam-btn", function(ev){
+        ev.preventDefault();
+        openCamera();
+    });
+}
+
+
+
+
+function openCamera(){
+    
+    destinationType = Camera.DestinationType;
+    pictureSource = Camera.PictureSourceType;
+    
+    navigator.camera.getPicture(cameraGood, cameraBad, 
+    {
+        quality : 70, 
+        destinationType : destinationType.FILE_URI,
+        sourceType : pictureSource.CAMERA
+        
+        
+    }
+    );
+    
+}
+
+function cameraGood(imgObj){
+    
+   
+    var imgContainer = $("#img-container");
+    imgContainer.attr("src", "data:image/jpeg;base64," + imgObj);
+    
+}
+
+function cameraBad(errorWhy){
+    
+    window.alert("Unable to access camera " + errorWhy);
+}
 
 
 
 
 
 
+
+
+
+    
+    
+   
+    
+    
+});//document.ready equivalent
+  
 
   
 

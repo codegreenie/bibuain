@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta property="description" content="Bibuan Data Application." />
+<title>How to Pay</title>
+    
+
+<link rel="stylesheet" type="text/css" href="styles/css/bibuain.min.css" />
+<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.structure-1.4.5.min.css" />
+<link rel="stylesheet" type="text/css" href="styles/css/app_style.css" /> 
+<link rel="stylesheet" type="text/css" href="styles/css/flight-manager.css" />
+    
+
+
+
+<script type="text/javascript" language="javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="scripts/config-script.js"></script>
+<script type="text/javascript" language="javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" language="javascript" src="scripts/plug_script.js"></script>
+
+    
+
+</head>
+
+<body>
+    
+    
+    
+    <div data-role="page" data-title="How to Pay"><!--How to Pay-->
+        
+        
+    <header> <!--Heading Section-->
+            <div data-role="header" data-position="fixed">
+                 <a href="#" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext">Back</a>
+                    <h1>Payment Options</h1>
+            </div>
+    </header><!--Heading Section-->
+        
+        
+            
+      
+    
+     
+            <div data-role="content">
+                 
+                    <h2 class="text-center text-mini-color">How to Pay?</h2>
+                
+                      
+        
+                
+                
+                <p>
+                   
+                        
+                        <h3>Payment Via Airtime:</h3>
+                        <span>Kindly make an airtime transfer of<br>
+                            <big>
+                            <b>
+                            <del>N</del><span id="card-price-tag"></spa>
+                                
+                            <script type="text/javascript">$("#card-price-tag").empty().html(window.localStorage.getItem("selected_card_price"));</script>
+                            </b>
+                            </big>
+                            
+                            to
+                            <br>
+                            <big>
+                                <b>08127632058 - MTN</b>
+                                <br>
+                                <b>08127632058 - Etisalat</b>
+                            
+                            </big>
+                        </span>
+                   
+                </p>
+                
+        <hr>
+                
+                <p>
+                   
+                        
+                        <h3>Payment via Bank Transfer:</h3>
+                        <span>Kindly make a bank deposit/transfer of<br>
+                            <big>
+                            <b>
+                            <del>N</del><span id="bank-price-tag"></span>
+                            <script type="text/javascript">
+                                $("#bank-price-tag").empty().html(window.localStorage.getItem("selected_bank_price"));</script>
+                            </b>
+                            </big>
+                            
+                            to
+                            <br>
+                            <big><b>0148719755 <br>
+                                GT Bank | Oladokun Olayemi</b></big>
+                        </span>
+                   
+                </p>
+    
+    
+     <hr>
+                
+                <p>
+                   
+                        
+                        
+                        <span>
+                            <em>
+                           Upon completion of payment(Bank Deposit or Cash Transfer or Airtime Transfer), Kindly upload a screenshot or snapshot of the bank teller or payment successful message.
+                            </em>
+                        </span>
+                   
+                </p>
+                
+            </div>
+   
+        
+        
+        
+             
+  
+        
+        
+    </div><!--How to Pay-->
+    
+    
+    
+    </body>
+    
+</html>
