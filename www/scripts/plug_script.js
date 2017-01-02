@@ -175,7 +175,7 @@ function networkHealth(){
     
     $.ajax({
         
-        url : "http://www.codegreenie.com/php_hub/_BibuainSME/network_health.php
+        url : "http://www.codegreenie.com/php_hub/_BibuainSME/network_health.php",
         //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/network_health.php",
         type : "GET",
         dataType : "html",
