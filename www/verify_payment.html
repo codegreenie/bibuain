@@ -4,35 +4,15 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta property="description" content="Bibuan Data Application." />
 <title>Verify Payment</title>
-    
-
-<link rel="stylesheet" type="text/css" href="styles/css/bibuain.min.css" />
-<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.icons.min.css" />
-<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.structure-1.4.5.min.css" />
-<link rel="stylesheet" type="text/css" href="styles/css/app_style.css" /> 
-
-    
-
-
-
-<script type="text/javascript" language="javascript" src="scripts/jquery.js"></script>
-<script type="text/javascript" language="javascript" src="scripts/config-script.js"></script>
-<script type="text/javascript" language="javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
-
-
-
-    
-
 </head>
 
 <body>
     
     
     
-    <div data-role="page" data-title="Verify Payment"><!--Verify Payment-->
-        
+<div data-role="page" data-title="Verify Payment"><!--Verify Payment-->
+<script type="text/javascript" charset="utf-8" src="scripts/bibuain_cordova.js"></script>
         
          <div data-role="popup" class="ui-content" id="sending-card" data-overlay-theme="a" data-dismissible="false" class="text-center"><!--Sending OTP-->
             
@@ -48,12 +28,36 @@
 </a>   
         
         
+    <div data-role="popup" id="network-stat" class="text-center" data-dismissible="false" style="padding:10px 15px;" data-overlay-theme="a" class="ui-content"><!--Network Health-->
+         
+         <img src="styles/css/images/ajax-loader.gif" style="display:block; margin:0 auto;">
+         
+         <h3>Checking network...</h3>
+         
+    
+    </div><!--Network Health-->
+        
+        
+        
+        
+ <div data-role="popup" class="ui-content" id="camera-access-error" data-overlay-theme="a" data-dismissible="false" class="text-center"><!--CAMERA Error-->
+            &nbsp;
+            
+    </div><!--CAMERA Error-->
+                
+       
+                
+         
+<a href="#camera-access-error" data-rel="popup" data-position-to="window" data-transition="pop" id="clik_2_cam_error">
+                  &nbsp;
+</a>   
+        
         
     <header> <!--Heading Section-->
             <div data-role="header" data-position="fixed">
                  <a href="#" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext">Back</a>
                     <h1>Payment</h1>
-               <!-- <a href="" id="add-pin-field" class="ui-btn ui-icon-plus ui-btn-icon-left ui-btn-icon-notext">Add</a>-->
+              <a href="#network-stat" class="ui-btn ui-icon-phone ui-btn-icon-left ui-btn-icon-notext" title="Check network status..." id="pull_network_stats" data-rel="popup" data-position-to="window" data-transition="slidedown" data-direction="reverse">Network Status</a>
             </div>
     </header><!--Heading Section-->
         
@@ -63,6 +67,26 @@
     
      
             <div data-role="content">
+                
+                
+                 <div data-role="popup" class="ui-content" id="update_popup" data-overlay-theme="a" data-dismissible="false" class="text-center"><!--Sending OTP-->
+            
+                <h3 class="text-mini-color">Update Available:</h3>
+                <span>New Version:&nbsp;
+                <b id="version_display"></b>
+                    
+                </span>
+                    
+                    <button type="button" id="update-btn">Update!</button>
+                    
+                </div>
+                
+       
+                
+         
+                <a href="#update_popup" data-rel="popup" data-position-to="window" data-transition="pop" id="clik_2_update">
+                   
+                </a>    
                  
                     <h2 class="text-center text-mini-color">Upload Proof of Payment.</h2>
                 
@@ -72,7 +96,7 @@
                  <a href="" class="ui-btn ui-icon-camera ui-btn-icon-left" id="open-cam-btn">Camera</a>
                 </div>
                    <div class="ui-block-b"> 
-                 <a href="" class="ui-btn ui-icon-cloud ui-btn-icon-left">Gallery</a>
+                 <a href="" class="ui-btn ui-icon-cloud ui-btn-icon-left" id="open-gallery-btn">Gallery</a>
                     </div>
                     
                 </div>
@@ -86,7 +110,10 @@
                  
                 
             <div><!--Image Container-->
-                <img src="" id="img-container" alt="" style="display:block; margin:0 auto; max-width:250px; max-height:250px;">
+            
+               <img src="" id="img-container" name="myImg" alt="" style="display:block; margin:0 auto; max-width:250px; max-height:250px;">
+                
+               
             </div><!--Image Container-->
                 
                 
@@ -111,13 +138,11 @@
  
     
         
-        
+
+      
     </div><!--Verify Payment-->
     
-<script type="text/javascript" language="javascript" src="cordova.js"></script>
-<script type="text/javascript" language="javascript" src="scripts/plug_script.js"></script>
 
-    
     </body>
     
 </html>

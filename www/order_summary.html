@@ -6,24 +6,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta property="description" content="Bibuan Data Application." />
 <title>Order Summary</title>
-    
-
-<link rel="stylesheet" type="text/css" href="styles/css/bibuain.min.css" />
-<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.icons.min.css" />
-<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.structure-1.4.5.min.css" />
-<link rel="stylesheet" type="text/css" href="styles/css/app_style.css" /> 
-<link rel="stylesheet" type="text/css" href="styles/css/flight-manager.css" />
-    
-
-
-
-<script type="text/javascript" language="javascript" src="scripts/jquery.js"></script>
-<script type="text/javascript" language="javascript" src="scripts/config-script.js"></script>
-<script type="text/javascript" language="javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
-<script type="text/javascript" language="javascript" src="scripts/plug_script.js"></script>
-
-    
-
 </head>
 
 <body>
@@ -32,12 +14,17 @@
     
     <div data-role="page" data-title="Order Summary"><!--Order Summary-->
         
+    
+        
         
     <header> <!--Heading Section-->
             <div data-role="header" data-position="fixed">
                  <a href="#" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext">Back</a>
                     <h1>Order Summary</h1>
+                
             </div>
+        
+        
     </header><!--Heading Section-->
         
         
@@ -46,6 +33,27 @@
     
      
             <div data-role="content">
+                
+                
+                
+                 <div data-role="popup" class="ui-content" id="update_popup" data-overlay-theme="a" data-dismissible="false" class="text-center"><!--Updater-->
+            
+                <h3 class="text-mini-color">Update Available:</h3>
+                <span>New Version:&nbsp;
+                <b id="version_display"></b>
+                    
+                </span>
+                    
+                    <button type="button" id="update-btn">Update!</button>
+                    
+                </div><!--Updater-->
+                
+       
+                
+         
+                <a href="#update_popup" data-rel="popup" data-position-to="window" data-transition="pop" id="clik_2_update">
+                   
+                </a>    
                  
                     <h2 class="text-center text-mini-color">Details</h2>
                 

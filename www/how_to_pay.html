@@ -6,24 +6,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta property="description" content="Bibuan Data Application." />
 <title>How to Pay</title>
-    
-
-<link rel="stylesheet" type="text/css" href="styles/css/bibuain.min.css" />
-<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.icons.min.css" />
-<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.structure-1.4.5.min.css" />
-<link rel="stylesheet" type="text/css" href="styles/css/app_style.css" /> 
-<link rel="stylesheet" type="text/css" href="styles/css/flight-manager.css" />
-    
-
-
-
-<script type="text/javascript" language="javascript" src="scripts/jquery.js"></script>
-<script type="text/javascript" language="javascript" src="scripts/config-script.js"></script>
-<script type="text/javascript" language="javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
-<script type="text/javascript" language="javascript" src="scripts/plug_script.js"></script>
-
-    
-
 </head>
 
 <body>
@@ -32,11 +14,22 @@
     
     <div data-role="page" data-title="How to Pay"><!--How to Pay-->
         
+        <div data-role="popup" id="network-stat" class="text-center" data-dismissible="false" style="padding:10px 15px;" data-overlay-theme="a" class="ui-content"><!--Network Health-->
+         
+         <img src="styles/css/images/ajax-loader.gif" style="display:block; margin:0 auto;">
+         
+         <h3>Checking network...</h3>
+         
+    
+    </div><!--Network Health-->
+    
+        
         
     <header> <!--Heading Section-->
             <div data-role="header" data-position="fixed">
                  <a href="#" data-rel="back" class="ui-btn ui-icon-arrow-l ui-btn-icon-left ui-btn-icon-notext">Back</a>
                     <h1>Payment Options</h1>
+                <a href="#network-stat" class="ui-btn ui-icon-phone ui-btn-icon-left ui-btn-icon-notext" title="Check network status..." id="pull_network_stats" data-rel="popup" data-position-to="window" data-transition="slidedown" data-direction="reverse">Network Status</a>
             </div>
     </header><!--Heading Section-->
         
@@ -69,9 +62,9 @@
                             to
                             <br>
                             <big>
-                                <b>08127632058 - MTN</b>
+                                <b>08101672095 - MTN</b>
                                 <br>
-                                <b>08127632058 - Etisalat</b>
+                                <b>08180450264 - Etisalat</b>
                             
                             </big>
                         </span>

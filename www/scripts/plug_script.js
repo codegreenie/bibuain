@@ -1,5 +1,43 @@
 //jQuery Document for Bibuain SME Data App
 
+function updateChecker(){
+    
+    $.ajax({
+        
+        url : "http://www.codegreenie.com/php_hub/_BibuainSME/process_signup.php",
+        //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/update_checker.php",
+        type : "GET",
+        dataType : "html",
+        crossDomain : true,
+        cache : true,
+        timeout : 4000,
+        success : function(versionReturn){
+            
+           var thisUpdate = window.localStorage.getItem("my_version");
+            if(versionReturn != thisUpdate){
+                
+                
+                $("#version_display").html("v" + versionReturn);
+                $("#clik_2_update").trigger("click");
+                
+            }
+            
+           
+            
+        },
+        
+        error : function(jqXHR, error, status){
+            
+            console.log("unable to check for updates", error);
+            console.log(status);
+            
+        }
+        
+    });
+    
+}
+
+
 function processReg(){
     
     var realUiUpdate = $("<h3>Sending OTP</h3><img src='styles/css/images/ajax-loader.gif' style='display:block; margin: 0 auto;' />");
@@ -29,6 +67,9 @@ function processReg(){
             }
             
             else{
+                console.log(successReturn);
+                var error_return = $("<img src='docs/imgs/warning.png' style='margin:0 auto; display:block;'/><h3>Signup failed, Try Again</h3><a href='' data-rel='back' class='ui-btn'>OK</a>");
+                $("#sending-otp").html(error_return);
                 window.alert(successReturn);
             }
             
@@ -128,6 +169,7 @@ function getLatestPrices(){
         dataType : "html",
         crossDomain : true,
         cache : true,
+        timeout : 5000,
         success : function(priceReturn){
             
            window.localStorage.setItem("current_prices", priceReturn);
@@ -147,11 +189,12 @@ function getLatestPricesEti(){
     $.ajax({
         
         url : "http://www.codegreenie.com/php_hub/_BibuainSME/fetch_latest_prices_eti.php",
-        /*url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/fetch_latest_prices_eti.php",*/
+        //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/fetch_latest_prices_eti.php",
         type : "GET",
         dataType : "html",
         crossDomain : true,
         cache : true,
+        timeout : 5000,
         success : function(priceReturn){
             
            window.localStorage.setItem("current_prices_eti", priceReturn);
@@ -235,6 +278,8 @@ $(document).on("pagecreate", function(){ //document.ready equivalent
        }
    });
     
+    
+    
  //Initiate initial cookies
     
     if(window.localStorage.getItem("selected_data") === null || window.localStorage.getItem("selected_bank_price") === null || window.localStorage.getItem("selected_card_price") === null)
@@ -248,9 +293,19 @@ $(document).on("pagecreate", function(){ //document.ready equivalent
         console.log(window.localStorage.getItem("selected_data"));
     }
     
+    
+   if(window.localStorage.getItem("my_version") === null){
+       
+       window.localStorage.setItem("my_version", "1.8.8");
+   }
+    
+    updateChecker();
 
 
-
+    $("#update-btn").on("click", function(){
+       
+        window.locaton.href("http://build.phonegap.com/app/128900");
+    });
 
     
    
@@ -378,84 +433,16 @@ $("#pull_network_stats").click(function(){
     });
 
     
-     
+ 
    
-
-
-    
-    
-    // HARDWARE CODE BABY
-    
-// Custom JS for Bibuain SME for Hardware
-var pictureSource;
-var destinationType;
-
-
-$(document).on("deviceready", function(){
-    
-    alleventsready();
-    
-});
-
-    
-    
-    
-    
-function alleventsready(){
-    
-    $("body").on("click", "#open-cam-btn", function(ev){
-        ev.preventDefault();
-        openCamera();
-    });
-}
-
-
-
-
-function openCamera(){
-    
-    destinationType = Camera.DestinationType;
-    pictureSource = Camera.PictureSourceType;
-    
-    navigator.camera.getPicture(cameraGood, cameraBad, 
-    {
-        quality : 70, 
-        destinationType : destinationType.FILE_URI,
-        sourceType : pictureSource.CAMERA
-        
-        
-    }
-    );
-    
-}
-
-function cameraGood(imgObj){
-    
-   
-    var imgContainer = $("#img-container");
-    imgContainer.attr("src", "data:image/jpeg;base64," + imgObj);
-    
-}
-
-function cameraBad(errorWhy){
-    
-    window.alert("Unable to access camera " + errorWhy);
-}
-
-
-
-
-
-
-
-
-
-    
-    
-   
-    
-    
 });//document.ready equivalent
+
+
+
+
+
+
+
   
 
   

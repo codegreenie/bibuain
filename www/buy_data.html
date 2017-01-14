@@ -4,30 +4,10 @@
 <meta charset="utf-8" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="msapplication-tap-highlight" content="no" />
-<!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
-<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta property="description" content="Bibuan Data Application." />
 <title>Data Recharge</title>
-    
-
-<link rel="stylesheet" type="text/css" href="styles/css/bibuain.min.css" />
-<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.icons.min.css" />
-<link rel="stylesheet" type="text/css" href="styles/css/jquery.mobile.structure-1.4.5.min.css" />
-<link rel="stylesheet" type="text/css" href="styles/css/app_style.css" /> 
-
-    
-
-
-
-<script type="text/javascript" language="javascript" src="scripts/jquery.js"></script>
-<script type="text/javascript" language="javascript" src="scripts/config-script.js"></script>
-<script type="text/javascript" language="javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
-<script type="text/javascript" language="javascript" src="scripts/plug_script.js"></script>
-
-    
-
 </head>
 
 <body>
@@ -51,7 +31,7 @@
                 
                 
                 </a></li>
-            <li><a href="history.html" class="ui-btn ui-icon-edit ui-btn-icon-left text-mr-white" data-transition="slideup" data-direction="reverse">&nbsp;History</a></li>
+            <li><a href="history.html" class="ui-btn ui-icon-clock ui-btn-icon-left text-mr-white" data-transition="slideup" data-direction="reverse">&nbsp;History</a></li>
             
              
             <li><a href="app_tour.html" class="ui-btn ui-icon-navigation ui-btn-icon-left text-mr-white" data-transition="slideup" data-direction="reverse">&nbsp;Take a tour</a></li>
@@ -99,6 +79,30 @@
           
             <div data-role="content"><!--Main Content-->
               
+                
+                <div data-role="popup" class="ui-content" id="update_popup" data-overlay-theme="a" data-dismissible="false" class="text-center"><!--Updater-->
+            
+                <h3 class="text-mini-color">Update Available:</h3>
+                <span>New Version:&nbsp;
+                <b id="version_display"></b>
+                    
+                </span>
+                    
+                    <button type="button">Update!</button>
+                    
+                </div><!--Updater-->
+                
+       
+                
+         
+                <a href="#update_popup" data-rel="popup" data-position-to="window" data-transition="pop" id="clik_2_update">
+                   
+                </a>    
+                
+                
+                
+                
+                
                 
           
           <ul data-role="listview" data-inset="true">
