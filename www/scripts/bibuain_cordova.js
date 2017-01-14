@@ -80,6 +80,8 @@ function cameraBad(errorWhy){
 
        
     function win(r) {
+        
+            window.alert("Successfully uploaded");
             console.log("Code = " + r.responseCode);
             console.log("Response = " + r.response);
             console.log("Sent = " + r.bytesSent);
@@ -90,9 +92,9 @@ function cameraBad(errorWhy){
 
 
         function fail(error) {
-            alert("An error has occurred: Code = " + error.code);
-            //console.log("upload error source " + error.source);
-            //console.log("upload error target " + error.target);
+            //alert("An error has occurred: Code = " + error.code);
+            console.log("upload error source " + error.source);
+            console.log("upload error target " + error.target);
         }
 
 
