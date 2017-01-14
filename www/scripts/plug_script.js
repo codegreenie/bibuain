@@ -4,7 +4,7 @@ function updateChecker(){
     
     $.ajax({
         
-        url : "http://www.codegreenie.com/php_hub/_BibuainSME/process_signup.php",
+        url : "http://www.codegreenie.com/php_hub/_BibuainSME/update_checker.php",
         //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/update_checker.php",
         type : "GET",
         dataType : "html",
