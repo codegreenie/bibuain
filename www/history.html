@@ -12,24 +12,20 @@
     
     
     
-    <div data-role="page" data-title="Transaction History" class="bg-main-color"><!--History-->
+    <div data-role="page" data-title="Transaction History"><!--History-->
         
-        <header> <!--Heading Section-->
+             
+    <header> <!--Heading Section-->
             <div data-role="header" data-position="fixed">
-                
-                
-                
-                <h1>History</h1>
-                
-               
-                
-                </div>
+                 <a href="#" data-rel="back" class="ui-btn ui-icon-carat-l ui-btn-icon-left ui-btn-icon-notext">Back</a>
+                    <h1>History</h1>
+            </div>
     </header><!--Heading Section-->
             
         
         
       
-        <div data-role="content" class="text-center">
+        <div data-role="content" class="text-center"><!--History Content-->
             
            <div data-role="popup" class="ui-content" id="update_popup" data-overlay-theme="a" data-dismissible="false" class="text-center"><!--Sending OTP-->
             
@@ -38,26 +34,29 @@
                 <b id="version_display"></b>
                     
                 </span>
-                    
                     <button type="button" id="update-btn">Update!</button>
-                    
                 </div>
                 
-       
-                
-         
-                <a href="#update_popup" data-rel="popup" data-position-to="window" data-transition="pop" id="clik_2_update">
+       <a href="#update_popup" data-rel="popup" data-position-to="window" data-transition="pop" id="clik_2_update">
                    
                 </a>    
             
-            <h4 class="text-mr-white" style="color:#fff;">Transaction Hisory will be available soon.</h4>
+           
+          <div id="history-container">
+            
+            </div>
+            
+            
+            
+            
+            
            
                
-        </div>   
+        </div><!--History Content-->   
         
         
           <div data-role="footer" data-position="fixed" class="bg-mini-color text-center">
-                <h1 class="text-mr-white" id="goto-home"> Home </h1>           
+                <h1 class="text-mr-white" id="goto-home"> Internet Data </h1>           
                         
        
     </div>            

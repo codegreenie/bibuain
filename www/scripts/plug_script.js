@@ -5,7 +5,7 @@ function updateChecker(){
     $.ajax({
         
         url : "http://www.codegreenie.com/php_hub/_BibuainSME/update_checker.php",
-        //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/update_checker.php",
+        //url : "http://localhost/php_hub/_BibuainSME/update_checker.php",
         type : "GET",
         dataType : "html",
         crossDomain : true,
@@ -15,22 +15,14 @@ function updateChecker(){
             
            var thisUpdate = window.localStorage.getItem("my_version");
             if(versionReturn != thisUpdate){
-                
-                
                 $("#version_display").html("v" + versionReturn);
                 $("#clik_2_update").trigger("click");
-                
             }
             
-           
-            
         },
-        
         error : function(jqXHR, error, status){
-            
             console.log("unable to check for updates", error);
             console.log(status);
-            
         }
         
     });
@@ -51,7 +43,7 @@ function processReg(){
     $.ajax({
         
         url : "http://www.codegreenie.com/php_hub/_BibuainSME/process_signup.php",
-        //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/process_signup.php",
+        //url : "http://localhost/php_hub/_BibuainSME/process_signup.php",
         type : "POST",
         dataType : "html",
         crossDomain : true,
@@ -104,7 +96,7 @@ function processOTP(){
     $.ajax({
         
         url : "http://www.codegreenie.com/php_hub/_BibuainSME/verify_otp.php",
-        //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/verify_otp.php",
+        //url : "http://localhost/php_hub/_BibuainSME/verify_otp.php",
         type : "POST",
         dataType : "html",
         crossDomain : true,
@@ -163,8 +155,8 @@ function pushSelectedPrice(thisPrice){
 function getLatestPrices(){
     $.ajax({
         
-        url : "http://www.codegreenie.com/php_hub/_BibuainSME/fetch_latest_prices.php",
-        //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/fetch_latest_prices.php",
+        //url : "http://www.codegreenie.com/php_hub/_BibuainSME/fetch_latest_prices.php",
+        url : "http://localhost/php_hub/_BibuainSME/fetch_latest_prices.php",
         type : "GET",
         dataType : "html",
         crossDomain : true,
@@ -189,7 +181,7 @@ function getLatestPricesEti(){
     $.ajax({
         
         url : "http://www.codegreenie.com/php_hub/_BibuainSME/fetch_latest_prices_eti.php",
-        //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/fetch_latest_prices_eti.php",
+        //url : "http://localhost/php_hub/_BibuainSME/fetch_latest_prices_eti.php",
         type : "GET",
         dataType : "html",
         crossDomain : true,
@@ -219,7 +211,7 @@ function networkHealth(){
     $.ajax({
         
         url : "http://www.codegreenie.com/php_hub/_BibuainSME/network_health.php",
-        //url : "http://localhost/Mobile_app_repo/php_hub/_BibuainSME/network_health.php",
+        //url : "http://localhost/php_hub/_BibuainSME/network_health.php",
         type : "GET",
         dataType : "html",
         crossDomain : true,
@@ -252,7 +244,33 @@ $("#network-stat").html('<h3> Network Status: <span style="font-weight:bold; col
 
 
 
-
+function getHistory(){
+    var mySmartPhone = window.localStorage.getItem("my_phone_number");
+    
+    $.ajax({
+        
+        url : "http://www.codegreenie.com/php_hub/_BibuainSME/history_generator.php",
+        //url : "http://localhost/php_hub/_BibuainSME/history_generator.php",
+        type : "POST",
+        dataType : "html",
+        crossDomain : true,
+        data : {"pushed_id" : mySmartPhone},
+        cache : true,
+        timeout : 5000,
+        success : function(historyReturn){
+            
+           //window.alert(historyReturn);
+            $("#history-container").html(historyReturn);
+        }
+        ,
+        error : function(jqXHR, error, status){
+         
+                window.alert(error + status);
+            console.log("Couldnt get history");
+        }
+        
+    });
+}
 
 
 
@@ -304,8 +322,8 @@ $(document).on("pagecreate", function(){ //document.ready equivalent
 
     $("#update-btn").on("click", function(){
        
-        window.locaton.href("http://build.phonegap.com/app/128900");
-    });
+        window.location = "http://build.phonegap.com/app/128900";
+    }); 
 
     
    
@@ -325,18 +343,10 @@ $(document).on("pagecreate", function(){ //document.ready equivalent
    
    
     
-    $("#phone-reg-form").on("submit", function(){
-        
-        processReg();
-        
-    });
+    $("#phone-reg-form").on("submit", function(){processReg();});
     
     
-    $("#verify-otp-form").on("submit", function(){
-        
-        processOTP();
-        
-    });
+    $("#verify-otp-form").on("submit", function(){processOTP();});
     
     
     
@@ -433,7 +443,7 @@ $("#pull_network_stats").click(function(){
     });
 
     
- 
+getHistory(); 
    
 });//document.ready equivalent
 
