@@ -310,17 +310,17 @@ $(document).on("pagecreate", function(){ //document.ready equivalent
     }
     
     
-   if(window.localStorage.getItem("my_version") === null){
+   
        
-       window.localStorage.setItem("my_version", "1.8.8");
-   }
+       window.localStorage.setItem("my_version", "2.0.4");
+  
     
     updateChecker();
 
 
     $("#update-btn").on("click", function(){
        
-        window.location = "http://build.phonegap.com/app/128900";
+        window.location = "http://build.phonegap.com/app/2396635/install";
     }); 
 
     
@@ -440,8 +440,12 @@ $("#pull_network_stats").click(function(){
 
     
 getHistory(); 
+    
+   
    
 });//document.ready equivalent
+
+
 
 
 

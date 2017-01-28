@@ -55,7 +55,11 @@ function cameraGood(imageURI){
         data : {"me_requester" : myTonaSobe, "request_plan" : the_plan, "request_phone" : req_phone},
         success : function(dataReturn){
             if(dataReturn === "Successful"){
-                $.mobile.changePage("history.html", {"data-transition" : "slide"});
+                
+                var push_error = $("<img src='docs/imgs/check.png' style='margin:0 auto; display:block;'/><h3>Your internet subscription will be credited soon.</h3><a href='history.html' 'data-transition' = 'slide' class='ui-btn'>OK, Got it</a>");
+                $("#camera-access-error").html(push_error);
+                $("#clik_2_cam_error").trigger("click");
+                
             }
             
             else{
@@ -99,7 +103,7 @@ function cameraGood(imageURI){
     
     
     var ft = new FileTransfer();
-    ft.upload(imageURI, encodeURI("http://codegreenie.com/php_hub/_BibuainSME/media_upload.php"), win, fail, options, true); 
+    ft.upload(imageURI, encodeURI("http://www.codegreenie.com/php_hub/_BibuainSME/media_upload.php"), win, fail, options, true); 
     
 }
 
