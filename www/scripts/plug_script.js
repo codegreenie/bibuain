@@ -155,8 +155,8 @@ function pushSelectedPrice(thisPrice){
 function getLatestPrices(){
     $.ajax({
         
-        //url : "http://www.codegreenie.com/php_hub/_BibuainSME/fetch_latest_prices.php",
-        url : "http://localhost/php_hub/_BibuainSME/fetch_latest_prices.php",
+        url : "http://www.codegreenie.com/php_hub/_BibuainSME/fetch_latest_prices.php",
+        //url : "http://localhost/php_hub/_BibuainSME/fetch_latest_prices.php",
         type : "GET",
         dataType : "html",
         crossDomain : true,
@@ -264,9 +264,7 @@ function getHistory(){
         }
         ,
         error : function(jqXHR, error, status){
-         
-                window.alert(error + status);
-            console.log("Couldnt get history");
+         console.log(error, status);
         }
         
     });
@@ -405,9 +403,7 @@ $(document).on("pagecreate", function(){ //document.ready equivalent
     
    var selected_phone = $("#recharge-phone").val();
    window.localStorage.setItem("selected_phone", selected_phone);
-        
-   
-       $.mobile.changePage("order_summary.html", {"transition" : "slideup", "data-direction" : "reverse"});
+        $.mobile.changePage("order_summary.html", {"transition" : "slideup", "data-direction" : "reverse"});
     });
     
     
