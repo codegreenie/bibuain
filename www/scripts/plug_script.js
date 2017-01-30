@@ -320,7 +320,7 @@ $(document).on("pagecreate", function(){ //document.ready equivalent
 
     $("#update-btn").on("click", function(){
        
-        window.location = "http://build.phonegap.com/app/2396635/install";
+        window.location = "http://build.phonegap.com/apps/2396635/install";
     }); 
 
     
