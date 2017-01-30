@@ -312,7 +312,7 @@ $(document).on("pagecreate", function(){ //document.ready equivalent
     
    
        
-       window.localStorage.setItem("my_version", "2.0.4");
+       window.localStorage.setItem("my_version", "2.0.6");
   
     
     updateChecker();
