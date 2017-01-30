@@ -32,12 +32,9 @@ function cameraGood(imageURI){
     $("#camera-access-error").html(busy_msg);
     $("#clik_2_cam_error").trigger("click");
     
-    
     var imgContainer = $("#img-container");
     imgContainer.attr("src", imageURI);
 
-    
-     function win(r) {
          var myTonaSobe = window.localStorage.getItem("my_phone_number");
          var the_plan = window.localStorage.getItem("selected_data") + " - " + window.localStorage.getItem("network_name");
          var req_phone = window.localStorage.getItem("selected_phone");
@@ -52,10 +49,25 @@ function cameraGood(imageURI){
         dataType : "html",
         crossDomain : true,
         cache : true,
+        async : false,
         data : {"me_requester" : myTonaSobe, "request_plan" : the_plan, "request_phone" : req_phone},
         success : function(dataReturn){
             if(dataReturn === "Successful"){
                 
+            var options = new FileUploadOptions();
+            options.fileKey = "file";
+            options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType = "image/jpeg";
+
+
+            var params = {};
+            options.params = params;
+            options.chunkedMode = false;
+
+
+            var ft = new FileTransfer();
+            ft.upload(imageURI, encodeURI("http://www.codegreenie.com/php_hub/_BibuainSME/media_upload.php"), console.log("success upload"), fail, options, true); 
+
                 var push_error = $("<img src='docs/imgs/check.png' style='margin:0 auto; display:block;'/><h3>Your internet subscription will be credited soon.</h3><a href='history.html' 'data-transition' = 'slide' class='ui-btn'>OK, Got it</a>");
                 $("#camera-access-error").html(push_error);
                 $("#clik_2_cam_error").trigger("click");
@@ -83,29 +95,6 @@ function cameraGood(imageURI){
 }
 
 
-    function fail(error) {
-        var upload_error = $("<img src='docs/imgs/warning.png' style='margin:0 auto; display:block;'/><h3>Upload error, try again</h3><a href='' data-rel='back' class='ui-btn'>OK</a>");
-        $("#camera-access-error").html(upload_error);
-        $("#clik_2_cam_error").trigger("click");
-    }
-    
-    
-    
-    var options = new FileUploadOptions();
-    options.fileKey = "file";
-    options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
-    options.mimeType = "image/jpeg";
-    
-    
-    var params = {};
-    options.params = params;
-    options.chunkedMode = false;
-    
-    
-    var ft = new FileTransfer();
-    ft.upload(imageURI, encodeURI("http://www.codegreenie.com/php_hub/_BibuainSME/media_upload.php"), win, fail, options, true); 
-    
-}
 
 
 
@@ -120,7 +109,11 @@ function cameraBad(errorWhy){
 
 
     
- 
+  function fail(error) {
+        var upload_error = $("<img src='docs/imgs/warning.png' style='margin:0 auto; display:block;'/><h3>Upload error, try again</h3><a href='' data-rel='back' class='ui-btn'>OK</a>");
+        $("#camera-access-error").html(upload_error);
+        $("#clik_2_cam_error").trigger("click");
+    }
     
 
 document.getElementById("open-cam-btn").addEventListener("click", openCamera, false); 
